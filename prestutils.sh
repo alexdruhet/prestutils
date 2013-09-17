@@ -134,10 +134,6 @@ function importDBProductionToStaging ()
     SQL1=${SQL1}";"
     SQL2=${SQL2}";"
     
- 
- 
-
-    
     mysql ${VERBOSE_FLAG} -u ${STAGING[1]} --password=${STAGING[2]} --host=${STAGING[3]} ${STAGING[4]} -e "${SQL1} ${SQL2}"
     echo -e ${DONE}
 }
@@ -174,10 +170,6 @@ function importFilesProductionToStaging ()
     do
         sed -i "s/${URI}/${STAGING[5]}.${URI}/g" ${STAGING[0]}/.htaccess
     done
-    
- 
- 
- 
 
     echo -e ${DONE}
     echo -e ${NOTICE_COLOR}'Clearing smarty cache'${DEFAULT_COLOR}
@@ -198,10 +190,6 @@ function importFilesStagingToProduction ()
     do
         sed -i "s/${STAGING[5]}.${URI}/${URI}/g" ${PRODUCTION[0]}/.htaccess
     done
-    
- 
- 
- 
 
     echo -e ${DONE}
     echo -e ${NOTICE_COLOR}'Clearing smarty cache'${DEFAULT_COLOR}
@@ -346,5 +334,3 @@ elif [ $DIRECTION == 'stl' ]; then
             ;;
     esac
 fi
-
-# exit 0
